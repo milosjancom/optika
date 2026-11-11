@@ -46,10 +46,16 @@ npm run preview    # static export to /out (the shareable preview)
 | `src/components/BookingForm.tsx` | Form Builder | Service, date and time slot, name and phone. |
 | `src/blocks/RenderBlocks.tsx`, `src/heros/HighImpact` | `src/blocks/*`, `src/heros/*` | Home page blocks. |
 
+## Real photos and brand logos
+
+- **Product photos:** put them in `public/products/<product-slug>/1.jpg, 2.jpg …`. The product slug is the last part of the product URL. They replace the drawn placeholders on the next build (`scripts/scan-assets.mjs` runs before `dev` and `build`).
+- **Brand logos:** put them in `public/brands/<brand-slug>.svg`, for example `ray-ban.svg` or `tom-ford.svg`. Use the official files from the brands' retailer kits. Until a file is there, the name is set in type.
+- **Brand tiers:** `src/lib/brands.ts` holds the luxury, engineering, everyday and house tiers. The Brendovi menu and page read from it.
+
 ## Placeholders
 
 - The product images in `public/media` are generated SVGs from `scripts/gen-media.mjs`. Real photos go into Payload Media.
-- The brands, model codes, prices, address and phone number are sample content.
+- Brands and model names are real, but sizes, colours, prices, address and phone number are sample content.
 - Contact lenses and accessories show a "coming soon online" state.
 
 ## Open items

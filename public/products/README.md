@@ -1,0 +1,3 @@
+Real product photos. One folder per product slug (the last part of the product URL),
+e.g. public/products/tom-ford-ft5401-optical-crna/1.jpg, 2.jpg …
+They replace the drawn placeholders automatically on the next build.

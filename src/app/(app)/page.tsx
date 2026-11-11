@@ -2,8 +2,10 @@ import Link from 'next/link'
 import { HighImpactHero } from '@/heros/HighImpact'
 import { RenderBlocks, type Block } from '@/blocks/RenderBlocks'
 import { Logo } from '@/components/Logo'
+import { BrandMark } from '@/components/BrandMark'
+import { tiers } from '@/lib/brands'
 import { Media } from '@/components/Media'
-import { brandNames, products, slugify } from '@/lib/data'
+import { products, slugify } from '@/lib/data'
 
 const m = (file: string, alt: string) => ({ id: file, url: `/media/${file}.svg`, alt, width: 800, height: 1000 })
 
@@ -86,17 +88,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brands strip */}
+      {/* Brands by tier */}
       <section className="container-wide py-10">
         <div className="mb-4 flex items-baseline justify-between text-xs">
           <h2 className="display text-sm">Brendovi</h2>
           <Link href="/brendovi" className="link-underline">Svi brendovi</Link>
         </div>
-        <div className="grid grid-cols-2 border-l border-t border-rule sm:grid-cols-4 lg:grid-cols-7">
-          {brandNames.map((b) => (
-            <Link key={b} href={`/kolekcije/${slugify(b)}`} className="flex h-24 items-center justify-center border-b border-r border-rule px-3 text-center text-sm hover:bg-tile">
-              {b}
-            </Link>
+        <div className="grid gap-8 md:grid-cols-3">
+          {tiers.slice(0, 3).map((t) => (
+            <div key={t.id}>
+              <p className="label border-b border-ink pb-2 text-ink">{t.title}</p>
+              <ul className="mt-1">
+                {t.brands.map((b) => (
+                  <li key={b.name} className="border-b border-rule">
+                    <Link href={`/kolekcije/${slugify(b.name)}`} className="group flex h-14 items-center justify-between">
+                      <BrandMark name={b.name} className="h-6" textClassName="text-lg" />
+                      <span className="text-ink-3 transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </section>

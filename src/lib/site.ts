@@ -3,7 +3,8 @@
   In Payload: the `header` global (navItems with mega-menu columns)
   and the `footer` global.
 */
-import { brandNames, slugify } from './data'
+import { brandNames, products, slugify } from './data'
+import { tiers } from './brands'
 
 export type MegaColumn = { title: string; links: { label: string; href: string }[] }
 export type NavItem = {
@@ -37,13 +38,14 @@ const shapeCol = (h: string): MegaColumn => ({
   ],
 })
 
-const brandCol = (h: string): MegaColumn => ({
-  title: 'Brend',
-  links: [
-    ...brandNames.map((b) => ({ label: b, href: c(h, `brend=${slugify(b)}`) })),
-    { label: 'Prikaži sve', href: c(h) },
-  ],
-})
+const brandCol = (h: string): MegaColumn => {
+  const type = h === 'suncane-naocare' ? 'sun' : 'optical'
+  const names = brandNames.filter((b) => products.some((p) => p.attributes.brand === b && p.attributes.productType === type))
+  return {
+    title: 'Brend',
+    links: [...names.map((b) => ({ label: b, href: c(h, `brend=${slugify(b)}`) })), { label: 'Svi brendovi', href: '/brendovi' }],
+  }
+}
 
 export const mainNav: NavItem[] = [
   {
@@ -120,7 +122,14 @@ export const mainNav: NavItem[] = [
       },
     ],
   },
-  { label: 'Brendovi', href: '/brendovi' },
+  {
+    label: 'Brendovi',
+    href: '/brendovi',
+    columns: tiers.map((t) => ({
+      title: t.title,
+      links: t.brands.map((b) => ({ label: b.name, href: c(slugify(b.name)) })),
+    })),
+  },
   { label: 'Akcija', href: c('akcija'), highlight: true },
 ]
 

@@ -1,11 +1,13 @@
 {
-  "name": "webshop-frontend",
+  "name": "dodji-i-vidi-optika",
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "predev": "node scripts/scan-assets.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/scan-assets.mjs",
     "build": "next build",
-    "preview": "PREVIEW_EXPORT=1 next build"
+    "preview": "node scripts/scan-assets.mjs && PREVIEW_EXPORT=1 next build"
   },
   "keywords": [],
   "author": "",

@@ -1,9 +1,10 @@
 /*
-  Mock catalog for the preview. Brands, model codes and prices are
-  placeholders. In Payload each product is one model in one colour
+  Mock catalog for the preview. Brands and model names are real; sizes,
+  colours and prices are placeholders. In Payload each product is one model in one colour
   (as on VistaExpert); colour siblings share the same `model`.
   Every exported function names its Payload equivalent.
 */
+import assets from './assets.json'
 import type { Category, EyewearAttributes, Gender, Product, ProductType, Shape, Variant, VariantType } from './types'
 
 export const categories: Category[] = [
@@ -52,27 +53,35 @@ const MODELS: Model[] = [
   { brand: 'Dođi i vidi', model: 'DV 2001 Sava', type: 'sun', shape: 'pilot', gender: 'unisex', material: 'titanijum', colors: ['srebrna', 'crna'], price: 15900, size: [54, 17, 145], polarized: true, description: 'Tanak titanijumski pilot sa polarizovanim staklima. 11 grama.' },
   { brand: 'Dođi i vidi', model: 'DV 2002 Vera', type: 'sun', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca'], price: 13900, badge: 'Najprodavanije', size: [51, 18, 140], description: 'Umeren cat-eye, dovoljno diskretan za svaki dan.' },
   { brand: 'Dođi i vidi', model: 'DV 0501 Mali', type: 'optical', shape: 'okrugli', gender: 'deca', material: 'acetat', colors: ['zelena', 'providna'], price: 8900, size: [42, 17, 125], description: 'Lagan dečji okvir sa fleksibilnim šarkama.' },
-  // Ray-Ban
-  { brand: 'Ray-Ban', model: 'RB 3025 Aviator', type: 'sun', shape: 'pilot', gender: 'unisex', material: 'metal', colors: ['srebrna', 'crna'], price: 21900, badge: 'Najprodavanije', size: [58, 14, 135], description: 'Klasičan metalni pilot.' },
-  { brand: 'Ray-Ban', model: 'RB 2140 Wayfarer', type: 'sun', shape: 'kvadratni', gender: 'unisex', material: 'acetat', colors: ['crna', 'kornjaca'], price: 19900, size: [50, 22, 150], description: 'Acetatni okvir prepoznatljivog oblika.' },
-  { brand: 'Ray-Ban', model: 'RB 5154 Clubmaster', type: 'optical', shape: 'panto', gender: 'muskarci', material: 'acetat', colors: ['crna', 'kornjaca'], price: 18900, sale: 22900, badge: 'Akcija', size: [49, 21, 140], description: 'Okvir sa izraženom gornjom linijom i metalnim donjim delom.' },
-  { brand: 'Ray-Ban', model: 'RB 5228', type: 'optical', shape: 'kvadratni', gender: 'unisex', material: 'acetat', colors: ['crna', 'kornjaca', 'providna'], price: 16900, size: [50, 17, 140], description: 'Jednostavan pravougaoni okvir za svaki dan.' },
-  { brand: 'Ray-Ban', model: 'RB 3447 Round', type: 'sun', shape: 'okrugli', gender: 'unisex', material: 'metal', colors: ['srebrna', 'medena'], price: 20900, polarized: true, size: [50, 21, 145], description: 'Okrugli metalni okvir.' },
-  // Persol
-  { brand: 'Persol', model: 'PO 3007V', type: 'optical', shape: 'panto', gender: 'muskarci', material: 'acetat', colors: ['kornjaca', 'crna'], price: 29900, size: [52, 19, 145], description: 'Italijanski acetat, šarka u obliku strele.' },
-  { brand: 'Persol', model: 'PO 0649', type: 'sun', shape: 'pilot', gender: 'muskarci', material: 'acetat', colors: ['kornjaca', 'crna'], price: 32900, polarized: true, size: [54, 20, 140], description: 'Acetatni pilot sa polarizovanim kristalnim staklima.' },
-  // Prada
-  { brand: 'Prada', model: 'PR 17WS', type: 'sun', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca'], price: 38900, badge: 'Novo', size: [49, 20, 140], description: 'Debeo acetatni okvir sa trouglastim logom na bočici.' },
-  { brand: 'Prada', model: 'PR 16MV', type: 'optical', shape: 'kvadratni', gender: 'zene', material: 'acetat', colors: ['crna', 'providna'], price: 34900, sale: 41900, badge: 'Akcija', size: [52, 18, 140], description: 'Elegantan pravougaoni okvir.' },
-  // Oakley
-  { brand: 'Oakley', model: 'OO 9208 Radar', type: 'sun', shape: 'pilot', gender: 'muskarci', material: 'metal', colors: ['crna', 'srebrna'], price: 24900, polarized: true, size: [55, 18, 135], description: 'Sportski okvir sa polarizovanim staklima.' },
-  { brand: 'Oakley', model: 'OX 8156 Holbrook', type: 'optical', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['crna', 'zelena'], price: 19900, size: [54, 18, 137], description: 'Lagan O-Matter okvir.' },
-  // Tom Ford
-  { brand: 'Tom Ford', model: 'FT 5401', type: 'optical', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['crna', 'kornjaca'], price: 42900, size: [52, 18, 145], description: 'Debeo acetat sa metalnim T detaljem.' },
-  { brand: 'Tom Ford', model: 'FT 0820 Cat', type: 'sun', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'medena'], price: 45900, badge: 'Novo', size: [55, 16, 140], description: 'Naglašen cat-eye.' },
-  // Vogue
-  { brand: 'Vogue Eyewear', model: 'VO 5286', type: 'optical', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca', 'providna'], price: 12900, size: [50, 17, 135], description: 'Lagan cat-eye okvir.' },
-  { brand: 'Vogue Eyewear', model: 'VO 4185', type: 'optical', shape: 'okrugli', gender: 'zene', material: 'metal', colors: ['medena', 'srebrna'], price: 13900, sale: 16900, badge: 'Akcija', size: [50, 20, 140], description: 'Tanak metalni okrugli okvir.' },
+  // Vrhunski luksuzni i dizajnerski
+  { brand: 'Tom Ford', model: 'FT5401 Optical', type: 'optical', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['crna', 'kornjaca'], price: 44900, size: [54, 16, 145], badge: 'Najprodavanije', description: 'Debeo acetat sa metalnim „T” na bočicama. Klasičan Tom Ford okvir za svaki dan.' },
+  { brand: 'Tom Ford', model: 'FT0237 Snowdon', type: 'sun', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['crna', 'kornjaca'], price: 49900, size: [52, 20, 145], description: 'Kvadratne sunčane naočare sa izraženim „T” detaljem.' },
+  { brand: 'Tom Ford', model: 'FT0820 Cat', type: 'sun', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'medena'], price: 52900, badge: 'Novo', size: [55, 16, 140], description: 'Naglašen cat-eye od debelog acetata.' },
+  { brand: 'Oliver Peoples', model: 'OV5186 Gregory Peck', type: 'optical', shape: 'panto', gender: 'unisex', material: 'acetat', colors: ['kornjaca', 'crna', 'providna'], price: 54900, badge: 'Najprodavanije', size: [47, 23, 150], description: 'Retro panto inspirisan filmskom klasikom, sa zakivcima na prednjem delu.' },
+  { brand: 'Oliver Peoples', model: 'OV1104S Cary Grant Sun', type: 'sun', shape: 'okrugli', gender: 'muskarci', material: 'titanijum', colors: ['medena', 'srebrna'], price: 64900, polarized: true, size: [50, 22, 145], description: 'Tanak titanijumski okvir sa ručno rađenim detaljima.' },
+  { brand: 'Gucci', model: 'GG0061S', type: 'sun', shape: 'okrugli', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca'], price: 46900, badge: 'Novo', size: [56, 22, 140], description: 'Veliki okrugli okvir sa italijanskim karakterom.' },
+  { brand: 'Gucci', model: 'GG0026O', type: 'optical', shape: 'kvadratni', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca'], price: 39900, size: [50, 22, 145], description: 'Pravougaoni acetatni okvir sa prepoznatljivim detaljem na bočici.' },
+  { brand: 'Prada', model: 'PR 17WS Symbole', type: 'sun', shape: 'cat-eye', gender: 'zene', material: 'acetat', colors: ['crna', 'kornjaca'], price: 42900, badge: 'Najprodavanije', size: [49, 20, 140], description: 'Debeo acetatni okvir sa trouglastim logom na bočici.' },
+  { brand: 'Prada', model: 'PR 16MV', type: 'optical', shape: 'kvadratni', gender: 'zene', material: 'acetat', colors: ['crna', 'providna'], price: 36900, sale: 43900, badge: 'Akcija', size: [52, 18, 140], description: 'Elegantan pravougaoni okvir.' },
+  { brand: 'Jacques Marie Mage', model: 'Dealan', type: 'sun', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['kornjaca', 'crna'], price: 98900, badge: 'Novo', size: [51, 23, 150], description: 'Ručno rađen okvir iz limitirane serije, numerisan.' },
+  { brand: 'Jacques Marie Mage', model: 'Zephirin', type: 'optical', shape: 'panto', gender: 'unisex', material: 'acetat', colors: ['providna', 'kornjaca'], price: 89900, size: [48, 22, 145], description: 'Snažan vizuelni identitet, debeo acetat i ručna obrada.' },
+  // Izdržljivost i inženjering
+  { brand: 'Lindberg', model: 'Strip Titanium 9704', type: 'optical', shape: 'okrugli', gender: 'unisex', material: 'titanijum', colors: ['srebrna', 'crna'], price: 74900, badge: 'Najprodavanije', size: [48, 21, 140], description: 'Ultra-lak titanijum bez šrafova i varova. Skoro neuništiv.' },
+  { brand: 'Lindberg', model: 'Air Titanium Rim Ellis', type: 'optical', shape: 'kvadratni', gender: 'muskarci', material: 'titanijum', colors: ['srebrna', 'medena'], price: 79900, size: [52, 19, 145], description: 'Minimalistički okvir od titanijumske žice, oko 5 grama.' },
+  { brand: 'ic! berlin', model: 'Model Lucas', type: 'optical', shape: 'panto', gender: 'muskarci', material: 'metal', colors: ['crna', 'srebrna'], price: 49900, size: [49, 20, 145], description: 'Tanak čelični lim, šarka bez šrafova koja se savija bez lomljenja.' },
+  { brand: 'Mykita', model: 'Lessrim Ilma', type: 'optical', shape: 'okrugli', gender: 'zene', material: 'metal', colors: ['medena', 'srebrna'], price: 59900, size: [48, 21, 140], description: 'Lagan okvir od nerđajućeg čelika, ručno sklapan u Berlinu.' },
+  { brand: 'Mykita', model: 'Studio 12.6', type: 'sun', shape: 'pilot', gender: 'unisex', material: 'metal', colors: ['crna', 'srebrna'], price: 64900, polarized: true, size: [55, 17, 145], description: 'Fleksibilan čelični pilot bez šrafova.' },
+  { brand: 'Persol', model: 'PO0649', type: 'sun', shape: 'pilot', gender: 'muskarci', material: 'acetat', colors: ['kornjaca', 'crna'], price: 32900, polarized: true, size: [54, 20, 140], description: 'Legendarni acetatni pilot sa fleksibilnim Meflecto sistemom na drškama.' },
+  { brand: 'Persol', model: 'PO3007V', type: 'optical', shape: 'panto', gender: 'muskarci', material: 'acetat', colors: ['kornjaca', 'crna'], price: 29900, size: [50, 19, 145], description: 'Italijanski acetat, šarka u obliku strele.' },
+  // Svakodnevni i sportski
+  { brand: 'Ray-Ban', model: 'RB3025 Aviator', type: 'sun', shape: 'pilot', gender: 'unisex', material: 'metal', colors: ['srebrna', 'crna'], price: 21900, badge: 'Najprodavanije', size: [58, 14, 135], description: 'Klasičan metalni pilot.' },
+  { brand: 'Ray-Ban', model: 'RB2140 Wayfarer', type: 'sun', shape: 'kvadratni', gender: 'unisex', material: 'acetat', colors: ['crna', 'kornjaca'], price: 19900, size: [50, 22, 150], description: 'Acetatni okvir prepoznatljivog oblika.' },
+  { brand: 'Ray-Ban', model: 'RB5154 Clubmaster', type: 'optical', shape: 'panto', gender: 'muskarci', material: 'acetat', colors: ['crna', 'kornjaca'], price: 18900, sale: 22900, badge: 'Akcija', size: [49, 21, 140], description: 'Okvir sa izraženom gornjom linijom i metalnim donjim delom.' },
+  { brand: 'Ray-Ban', model: 'RB5228', type: 'optical', shape: 'kvadratni', gender: 'unisex', material: 'acetat', colors: ['crna', 'kornjaca', 'providna'], price: 16900, size: [50, 17, 140], description: 'Jednostavan pravougaoni okvir za svaki dan.' },
+  { brand: 'Oakley', model: 'OO9102 Holbrook', type: 'sun', shape: 'kvadratni', gender: 'muskarci', material: 'acetat', colors: ['crna', 'zelena'], price: 22900, polarized: true, size: [55, 18, 137], description: 'Lagan O-Matter okvir sa Prizm staklima.' },
+  { brand: 'Oakley', model: 'OO9208 Radar EV Path', type: 'sun', shape: 'pilot', gender: 'muskarci', material: 'metal', colors: ['crna', 'srebrna'], price: 26900, polarized: true, size: [38, 18, 128], description: 'Sportski okvir sa velikim staklom za bicikl i trčanje.' },
+  { brand: 'Maui Jim', model: "MJ202 Peahi", type: 'sun', shape: 'pilot', gender: 'muskarci', material: 'metal', colors: ['crna', 'srebrna'], price: 34900, polarized: true, size: [65, 15, 127], description: 'Polarizovana PolarizedPlus2 stakla koja pojačavaju boje i kontrast.' },
+  { brand: 'Maui Jim', model: 'Red Sands', type: 'sun', shape: 'kvadratni', gender: 'unisex', material: 'acetat', colors: ['kornjaca', 'crna'], price: 31900, polarized: true, size: [56, 20, 140], description: 'Sunčane naočare za svaki dan sa vrhunskim polarizovanim staklima.' },
 ]
 
 const slugify = (s: string) =>
@@ -114,7 +123,11 @@ export const products: Product[] = MODELS.flatMap((m, mi) =>
       slug,
       title: `${m.brand} ${m.model}`,
       description: [m.description],
-      gallery: imgs.map((f, i) => ({
+      gallery: ((assets.products as Record<string, string[]>)[slug]
+        ? (assets.products as Record<string, string[]>)[slug].map((url, i) => ({
+            image: { id: url, url, alt: `${m.brand} ${m.model}, ${c.label.toLowerCase()}${i === 0 ? '' : ', detalj'}`, width: 1200, height: 1200 },
+          }))
+        : null) ?? imgs.map((f, i) => ({
         image: { id: f, url: `/media/${f}.svg`, alt: `${m.brand} ${m.model}, ${c.label.toLowerCase()}${i === 0 ? '' : ', detalj'}`, width: 800, height: 1000 },
       })),
       priceInRSD: m.price,
