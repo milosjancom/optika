@@ -45,7 +45,7 @@ type Model = {
   description: string
 }
 
-const MODELS: Model[] = [
+export const MODELS: Model[] = [
   // House line
   { brand: 'Dođi i vidi', model: 'DV 1001 Mira', type: 'optical', shape: 'okrugli', gender: 'unisex', material: 'acetat', colors: ['crna', 'kornjaca', 'providna'], price: 11900, size: [47, 21, 145], badge: 'Novo', description: 'Okrugli okvir od bio-acetata, ručno poliran. Naša kuća linija, rađena za svakodnevno nošenje.' },
   { brand: 'Dođi i vidi', model: 'DV 1002 Lena', type: 'optical', shape: 'panto', gender: 'zene', material: 'acetat', colors: ['kornjaca', 'providna', 'crna'], price: 11900, size: [49, 20, 145], description: 'Mekan panto oblik: ravan gore, zaobljen dole. Okvir sa kojim se teško pogreši.' },

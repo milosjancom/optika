@@ -11,10 +11,20 @@ This is the design preview for **Dođi i vidi optika**, an optician in Belgrade 
 ## Run
 
 ```bash
+cp .env.example .env   # fill in DATABASE_URL (Neon) and PAYLOAD_SECRET
 npm install
-npm run dev        # http://localhost:3000
-npm run preview    # static export to /out (the shareable preview)
+npm run dev            # site: http://localhost:3000 · admin: http://localhost:3000/admin
 ```
+
+## Payload CMS
+
+- **Admin:** `/admin`. The first visit creates the first admin user.
+- **Collections:** Proizvodi (products), Brendovi (brands), Slike (media) and Korisnici (users). They're defined in `src/collections/*`; the config is `src/payload.config.ts`.
+- **Database:** Neon Postgres, through `DATABASE_URL`. Migrations live in `src/migrations` and run automatically when the production server starts (`prodMigrations`).
+- **Images:** Vercel Blob, through `BLOB_READ_WRITE_TOKEN`. When that's missing, files are stored locally in dev.
+- **Sample catalog:** while logged in, open `/api/seed?potvrdi=da` to import the preview brands and products into an empty database. It's safe to run twice.
+- **After changing a collection:** run `npm run generate:types`, `npm run generate:importmap` and `npm run migrate:create <name>`, then commit the new migration.
+- **Frontend:** the shop pages still read the sample data in `src/lib/data.ts`. Switching them to Payload's Local API is the next step.
 
 ## Routes
 
