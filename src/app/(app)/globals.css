@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens for Dođi i vidi optika. Brand colour: logo red #ed2324. Tailwind utilities point at the
+  --t-* variables below. Map these onto the Payload template's globals.css.
+*/
+
+@theme inline {
+  --color-ground: var(--t-ground);
+  --color-paper: var(--t-paper);
+  --color-tile: var(--t-tile);
+  --color-tile-2: var(--t-tile-2);
+  --color-ink: var(--t-ink);
+  --color-ink-2: var(--t-ink-2);
+  --color-ink-3: var(--t-ink-3);
+  --color-rule: var(--t-rule);
+  --color-accent: var(--t-accent);
+  --color-cta: var(--t-cta);
+  --color-cta-ink: var(--t-cta-ink);
+  --color-bar: var(--t-bar);
+  --color-bar-ink: var(--t-bar-ink);
+  --color-sale: var(--t-brand-dark);
+  --color-brand: var(--t-brand);
+  --color-brand-dark: var(--t-brand-dark);
+  --color-brand-tint: var(--t-brand-tint);
+  --color-chart: var(--t-chart);
+
+  --font-sans: var(--t-font-sans);
+  --font-display: var(--t-font-display);
+}
+
+@theme {
+  --text-2xs: 0.75rem;     /* 12px — labels */
+  --text-2xs--line-height: 1.1rem;
+  --text-xs: 0.875rem;     /* 14px — nav, meta */
+  --text-xs--line-height: 1.3rem;
+  --text-sm: 1rem;         /* 16px — body default */
+  --text-sm--line-height: 1.5rem;
+  --text-base: 1.125rem;   /* 18px — lead copy */
+  --text-base--line-height: 1.7rem;
+
+  --spacing-gutter: 1.25rem;
+  --spacing-header: 4.5rem;
+
+  --ease-calm: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Theme: Dođi i vidi optika ---------- */
+
+:root {
+  --t-ground: #f7f6f3;
+  --t-paper: #ffffff;
+  --t-tile: #ecebe7;
+  --t-tile-2: #e3e1db;
+  --t-ink: #161616;
+  --t-ink-2: #5e5c58;
+  --t-ink-3: #9a9791;
+  --t-rule: #dedcd6;
+  --t-brand: #ed2324;       /* logo red */
+  --t-brand-dark: #c8191b;  /* buttons and text on light: 5.3:1 with white */
+  --t-brand-tint: #fdeceb;
+  --t-accent: #c8191b;
+  --t-cta: #c8191b;
+  --t-cta-ink: #ffffff;
+  --t-bar: #ed2324;
+  --t-bar-ink: #ffffff;
+  --t-chart: #f1f0ed;       /* neutral panel */
+  --t-font-sans: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --t-font-display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --t-display-transform: none;
+  --t-display-weight: 500;
+  --t-display-tracking: -0.02em;
+  --t-wordmark-tracking: 0.42em;
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--t-ground);
+    color: var(--t-ink);
+    font-family: var(--t-font-sans);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+  }
+  h1, h2, h3, h4 {
+    font-weight: 500;
+  }
+  ::selection {
+    background: var(--t-ink);
+    color: var(--t-ground);
+  }
+  :focus-visible {
+    outline: 1px solid var(--t-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .container-wide {
+    width: 100%;
+    padding-inline: var(--spacing-gutter);
+  }
+  .display {
+    font-family: var(--t-font-display);
+    text-transform: var(--t-display-transform);
+    font-weight: var(--t-display-weight);
+    letter-spacing: var(--t-display-tracking);
+  }
+  .wordmark {
+    font-family: var(--t-font-display);
+    font-weight: 700;
+    letter-spacing: var(--t-wordmark-tracking);
+    text-transform: uppercase;
+  }
+  .label {
+    font-size: var(--text-2xs);
+    line-height: var(--text-2xs--line-height);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms var(--ease-calm);
+  }
+  .link-underline:hover,
+  .link-underline[aria-current='page'] {
+    background-size: 100% 1px;
+  }
+}

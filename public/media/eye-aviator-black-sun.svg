@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <pattern id="tort" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+    <rect width="60" height="60" fill="#5a3418"/>
+    <ellipse cx="14" cy="18" rx="12" ry="7" fill="#8f5a26" opacity=".9"/>
+    <ellipse cx="44" cy="40" rx="10" ry="6" fill="#2b170a" opacity=".85"/>
+    <ellipse cx="38" cy="12" rx="6" ry="4" fill="#b07a3a" opacity=".7"/>
+    <ellipse cx="10" cy="48" rx="7" ry="4" fill="#3a200d" opacity=".8"/>
+  </pattern>
+  <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2a2a28" stop-opacity=".92"/>
+    <stop offset="1" stop-color="#5a5650" stop-opacity=".8"/>
+  </linearGradient>
+  <linearGradient id="clear" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+    <stop offset=".5" stop-color="#fff" stop-opacity=".08"/>
+    <stop offset="1" stop-color="#fff" stop-opacity=".3"/>
+  </linearGradient>
+  <radialGradient id="light" cx=".35" cy=".25" r=".9">
+    <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+  <linearGradient id="fold" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#000" stop-opacity=".10"/>
+    <stop offset=".18" stop-color="#000" stop-opacity="0"/>
+    <stop offset=".82" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".10"/>
+  </linearGradient>
+  <linearGradient id="drape" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".08"/>
+  </linearGradient>
+</defs>
+  <rect x="0" y="0" width="800" height="1000" fill="#e9e4da"/>
+  <rect x="0" y="0" width="800" height="1000" fill="url(#light)"/>
+  <ellipse cx="400" cy="640" rx="290" ry="26" fill="#000" opacity=".14" filter="url(#soft)"/>
+  <g transform="translate(400 540) scale(1.02)">
+    <g >
+      
+    <g transform="translate(-150 0) scale(-1 1)">
+      <g fill="none" stroke="#1a1a1a" stroke-width="22" stroke-linejoin="round"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+      
+      <g fill="url(#sun)" transform="scale(.94)"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+      <g fill="none" stroke="#3a3a3a" stroke-width="3" opacity=".55" transform="scale(1.02) translate(-4 -4)"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+    </g>
+      
+    <g transform="translate(150 0) ">
+      <g fill="none" stroke="#1a1a1a" stroke-width="22" stroke-linejoin="round"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+      
+      <g fill="url(#sun)" transform="scale(.94)"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+      <g fill="none" stroke="#3a3a3a" stroke-width="3" opacity=".55" transform="scale(1.02) translate(-4 -4)"><path d="M-122 -88 C-60 -102 60 -102 120 -92 C130 40 70 112 0 112 C-70 112 -126 40 -122 -88Z"/></g>
+    </g>
+      <path d="M-30 -48 Q0 -70 30 -48" fill="none" stroke="#1a1a1a" stroke-width="16.5" stroke-linecap="round"/>
+      <path d="M-282 -50 L-310 -58" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>
+      <path d="M282 -50 L310 -58" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>
+    </g></g>
+</svg>
